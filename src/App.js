@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
+import AdminHomepage from "./components/AdminPage/AdminHomepage";
+import { useState } from "react";
+import AdminAuth from "./components/AdminPage/AdminAuth";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { currentUser, currentUserRole } = useSelector((state) => state);
+  console.log(currentUser, currentUserRole);
+
+  const PrivateRouteAdmin = ({ component: Component, ...rest }) => {
+    return (
+      <Route
+        {...rest}
+        render={() =>
+          currentUser && currentUserRole === 1 ? (
+            <Component />
+          ) : (
+            <Redirect to="/admin-login" />
+          )
+        }
+      />
+    );
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <PrivateRouteAdmin exact path="/admin" component={AdminHomepage} />
+        <Route exact path="/admin-login" component={AdminAuth} />
+      </Switch>
+    </Router>
   );
 }
 
