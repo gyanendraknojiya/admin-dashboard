@@ -57,10 +57,10 @@ const AdminAuth = () => {
         <div
           className="d-flex justify-content-center align-items-center w-100"
           style={{
-            height: "calc(100vh - 55px)",
+            height: "calc(100vh - 60px)",
           }}
         >
-          <div className="rounded-lg p-3 bg-light shadow border ">
+          <div className="admin-auth-modal">
             <div className="text-center">
               <Icon icon="user-analysis" size="3x" />{" "}
             </div>

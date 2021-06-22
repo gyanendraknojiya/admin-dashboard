@@ -7,12 +7,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "rsuite/dist/styles/rsuite-default.css";
 import { Provider } from "react-redux";
-import Store from "./Redux/Store";
+import {Store, persistor} from "./Redux/Store";
+import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={Store}>
+    <PersistGate loading={null} persistor={persistor}>
       <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
