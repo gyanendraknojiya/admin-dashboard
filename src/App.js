@@ -10,11 +10,9 @@ import {
 import AdminHomepage from "./components/AdminPage/AdminHomepage";
 // import { useState } from "react";
 import AdminAuth from "./components/AdminPage/AdminAuth";
-import { useSelector } from "react-redux";
+import { connect } from "react-redux";
 
-
-function App() {
-  const { currentUser, currentUserRole } = useSelector((state) => state);
+function App({ currentUser, currentUserRole }) {
   console.log(currentUser, currentUserRole);
 
   const PrivateRouteAdmin = ({ component: Component, ...rest }) => {
@@ -46,4 +44,6 @@ function App() {
   );
 }
 
-export default App;
+export default connect(state=>({
+  currentUser: state.currentUser, currentUserRole : state.currentUserRole
+}),null)(App);

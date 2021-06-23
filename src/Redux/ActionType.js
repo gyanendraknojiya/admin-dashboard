@@ -1,2 +1,4 @@
 export const SET_CURRENT_USER = "SET_CURRENT_USER"
 export const SET_CURRENT_USER_ROLE = "SET_CURRENT_USER_ROLE";
+export const SET_ALL_POSTS = "SET_ALL_POSTS";
+export const SET_ADD_POST = "SET_ADD_POST";

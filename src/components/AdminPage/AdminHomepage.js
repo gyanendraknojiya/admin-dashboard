@@ -11,7 +11,11 @@ const AdminHomepage = () => {
         <LeftBar />
         <div
           className="p-3"
-          style={{ width: "calc (100vh - 200px)" }}
+          style={{
+            width: "calc(100vw - 200px)",
+            height: "calc(100vh - 60px)",
+            overflowY: "auto",
+          }}
         >
           <AddPost />
         </div>
