@@ -39,6 +39,7 @@ function App({ currentUser, currentUserRole }) {
         <PrivateRouteAdmin exact path="/admin/:slug" component={AdminHomepage} />
 
         <Route exact path="/admin-login" component={AdminAuth} />
+        <Route path="/"><Redirect to="/admin"/></Route>
       </Switch>
     </Router>
   );

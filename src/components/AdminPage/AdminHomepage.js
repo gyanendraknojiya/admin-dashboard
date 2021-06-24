@@ -1,9 +1,13 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import AddPost from "./AddPost";
 import AdminHeader from "./AdminHeader";
+import AllPosts from "./AllPosts";
 import LeftBar from "./LeftBar";
 
 const AdminHomepage = () => {
+  let param = useParams();
+  let slug = param.slug;
   return (
     <div>
       <AdminHeader />
@@ -17,7 +21,8 @@ const AdminHomepage = () => {
             overflowY: "auto",
           }}
         >
-          <AddPost />
+          {slug === "add-post" && <AddPost />}
+          {slug === "all-posts" && <AllPosts />}
         </div>
       </div>
     </div>

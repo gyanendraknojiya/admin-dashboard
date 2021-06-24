@@ -22,7 +22,7 @@ const LeftBar = () => {
     },
     {
       name: "Add Post",
-      slug: "add-posts",
+      slug: "add-post",
       icon: faEdit,
     },
   ];

@@ -13,7 +13,7 @@ const AddPost = ({allPosts, currentUser,addPost}) => {
   const editor = useRef(null);
   const [editorData, setEditorData] = useState("");
   const [postTitle, setPostTitle] =useState("")
-  const [featureImage, setFeaturedImage] = useState(null);
+  const [featuredImage, setFeaturedImage] = useState(null);
 
   
 
@@ -27,11 +27,11 @@ const AddPost = ({allPosts, currentUser,addPost}) => {
 
   const handleSubmitPost=(e)=>{
     e.preventDefault();
-    if(!postTitle || !featureImage || !editorData) return;
+    if(!postTitle || !featuredImage || !editorData) return;
     addPost({
       id: allPosts.length +1,
       title: postTitle,
-      featureImage,
+      featuredImage:URL.createObjectURL(featuredImage),
       content: editorData,
       createdAt: Date.now(),
       author: currentUser.email
